@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lets Knot You UP | AI Wedding Planner</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-page="planner">
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">LK</span>
+        <span><strong>Lets Knot You UP</strong><small>Wedding planning studio</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a class="active" href="index.html">Planner</a>
+        <a href="vendors.html">Vendors</a>
+        <a href="budget.html">Budget</a>
+        <a href="timeline.html">Timeline</a>
+      </nav>
+      <a class="nav-cta" href="vendors.html">Find vendors</a>
+    </header>
+
+    <main>
+      <section class="planner-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">AI wedding planner</p>
+          <h1>Build the vendor team, budget, and timeline in one calm workspace.</h1>
+          <p>Tell the assistant what you want, then review vendor matches manually before you shortlist or message anyone.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="vendors.html">Browse vendors</a>
+            <a class="ghost-button" href="budget.html">View budget</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="assets/planning-workspace.png" alt="Wedding planning workspace with moodboards and vendor materials">
+          <div class="hero-stat">
+            <span>Best match</span>
+            <strong id="heroMatch">94%</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="planner-grid">
+        <form class="studio-panel profile-panel" id="profileForm">
+          <div class="panel-title">
+            <p class="eyebrow">Wedding profile</p>
+            <h2>Your planning brief</h2>
+          </div>
+          <div class="form-grid">
+            <label>City<select id="cityInput"></select></label>
+            <label>Date<input id="dateInput" type="date" value="2026-10-10"></label>
+            <label>Guests<input id="guestInput" type="number" min="20" max="800" value="160"></label>
+            <label>Budget<input id="budgetInput" type="number" min="5000" step="1000" value="65000"></label>
+            <label>Style<select id="styleInput"></select></label>
+          </div>
+          <button class="primary-button" type="submit">Update planner</button>
+          <div class="style-quiz" id="quizButtons"></div>
+        </form>
+
+        <section class="studio-panel chat-panel">
+          <div class="panel-title row-title">
+            <div>
+              <p class="eyebrow">AI concierge</p>
+              <h2>Ask for a plan</h2>
+            </div>
+            <span class="pill">AI demo mode</span>
+          </div>
+          <div class="chat-log" id="chatLog" aria-live="polite"></div>
+          <form class="chat-form" id="chatForm">
+            <input id="chatInput" placeholder="Example: garden venue and vegetarian catering for 160 guests under 70k">
+            <button class="primary-button" type="submit">Send</button>
+          </form>
+          <div class="quick-prompts">
+            <button type="button" data-prompt="Build a venue, catering, decor, photo, and rental package under my budget.">Build package</button>
+            <button type="button" data-prompt="Find vendors for a traditional Indian wedding with 250 guests.">Indian wedding</button>
+            <button type="button" data-prompt="Draft a message for the best venue.">Draft message</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="page-section">
+        <div class="section-heading">
+          <p class="eyebrow">Recommended next</p>
+          <h2>Start with the highest-impact vendors.</h2>
+        </div>
+        <div class="recommendation-grid" id="topRecommendations"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

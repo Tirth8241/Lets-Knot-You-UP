@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Budget | Lets Knot You UP</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-page="budget">
+    <header class="site-header">
+      <a class="brand" href="index.html"><span class="brand-mark">LK</span><span><strong>Lets Knot You UP</strong><small>Wedding planning studio</small></span></a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Planner</a>
+        <a href="vendors.html">Vendors</a>
+        <a class="active" href="budget.html">Budget</a>
+        <a href="timeline.html">Timeline</a>
+      </nav>
+      <a class="nav-cta" href="vendors.html">Add vendors</a>
+    </header>
+
+    <main>
+      <section class="budget-hero">
+        <div>
+          <p class="eyebrow">Budget assistant</p>
+          <h1>See what your shortlist costs before deposits start.</h1>
+        </div>
+        <div class="budget-meter studio-panel">
+          <div class="meter-copy"><span id="budgetUsed">$0 selected</span><strong id="budgetRemaining">$65,000 remaining</strong></div>
+          <div class="meter"><span id="budgetBar"></span></div>
+        </div>
+      </section>
+
+      <section class="budget-layout">
+        <div class="studio-panel">
+          <div class="panel-title">
+            <p class="eyebrow">Shortlist</p>
+            <h2>Selected vendors</h2>
+          </div>
+          <div class="budget-list" id="budgetList"></div>
+        </div>
+        <aside class="studio-panel">
+          <p class="eyebrow">Smart package</p>
+          <h2>Missing categories</h2>
+          <div class="sidebar-list" id="missingCategories"></div>
+          <button class="primary-button full-button" id="budgetPackageButton" type="button">Fill missing vendors</button>
+        </aside>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
