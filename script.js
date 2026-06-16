@@ -381,6 +381,45 @@ function buildSmartPackage() {
   return picks;
 }
 
+function setupChatWidget() {
+  const mount = document.querySelector("#aiChatMount");
+  if (!mount || mount.dataset.ready) return;
+  mount.dataset.ready = "true";
+  mount.innerHTML = `
+    <section class="chat-widget" id="chatWidget" aria-label="AI wedding planner chat">
+      <div class="chat-widget-header">
+        <div>
+          <strong>AI Wedding Planner</strong>
+          <p>Vendor matches, packages, drafts, and budget guidance</p>
+        </div>
+        <button class="chat-close" type="button" aria-label="Close AI chat">×</button>
+      </div>
+      <div class="chat-log" id="chatLog" aria-live="polite"></div>
+      <form class="chat-form" id="chatForm">
+        <input id="chatInput" autocomplete="off" placeholder="Ask for venues, packages, draft messages...">
+        <button class="primary-button" type="submit">Send</button>
+      </form>
+      <div class="quick-prompts">
+        <button type="button" data-prompt="Build a full vendor package under my budget.">Package</button>
+        <button type="button" data-prompt="Find romantic garden vendors for 160 guests.">Garden</button>
+        <button type="button" data-prompt="Draft a message to the best venue.">Draft</button>
+      </div>
+    </section>
+    <button class="chat-launcher" type="button" id="chatLauncher" aria-label="Open AI wedding planner">
+      <span class="chat-dot"></span>
+      AI Planner
+    </button>
+  `;
+
+  const widget = document.querySelector("#chatWidget");
+  const launcher = document.querySelector("#chatLauncher");
+  launcher.addEventListener("click", () => widget.classList.toggle("open"));
+  document.querySelector(".chat-close").addEventListener("click", () => widget.classList.remove("open"));
+  document.querySelectorAll("[data-open-chat]").forEach((button) => {
+    button.addEventListener("click", () => widget.classList.add("open"));
+  });
+}
+
 function vendorCard(vendor, compact = false) {
   const saved = state.shortlist.includes(vendor.id);
   return `
@@ -515,8 +554,9 @@ function parseChat(text) {
 
 function setupChat() {
   const form = document.querySelector("#chatForm");
-  if (!form) return;
-  addMessage("ai", "Tell me your city, date, guest count, budget, and style. I will rank vendors, build packages, and draft outreach.");
+  if (!form || form.dataset.ready) return;
+  form.dataset.ready = "true";
+  addMessage("ai", "Hi, I am your AI wedding planner. Tell me the city, guest count, budget, style, or vendor category and I will shape the plan.");
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const input = document.querySelector("#chatInput");
@@ -528,12 +568,13 @@ function setupChat() {
     const lower = text.toLowerCase();
     if (lower.includes("package") || lower.includes("build")) {
       const picks = buildSmartPackage();
-      addMessage("ai", `I added a starter package: ${picks.map((vendor) => vendor.name).join(", ")}.`);
+      const total = picks.reduce((sum, vendor) => sum + vendor.price, 0);
+      addMessage("ai", `I added a polished starter package: ${picks.map((vendor) => vendor.name).join(", ")}. Estimated package total is ${money(total)}.`);
       return;
     }
     if (lower.includes("draft") || lower.includes("message")) {
       const vendor = rankedVendors()[0];
-      addMessage("ai", `Best vendor to message first is ${vendor.name}. Open the profile to edit the drafted inquiry.`);
+      addMessage("ai", `Best vendor to message first is ${vendor.name}. Open their profile and you will see an editable inquiry already drafted with your date, guest count, and style.`);
       return;
     }
     const picks = rankedVendors().slice(0, 3);
@@ -618,7 +659,7 @@ function renderVendorProfile() {
   root.innerHTML = `
     <section class="profile-hero">
       <div class="profile-media"><img src="${vendor.image}" alt="${vendor.name} wedding portfolio"></div>
-      <article class="profile-card">
+      <article class="profile-detail-card">
         <div class="profile-meta">
           <p class="eyebrow">${vendor.category}</p>
           <span class="pill">${scoreVendor(vendor)}% match</span>
@@ -640,14 +681,14 @@ function renderVendorProfile() {
     </section>
 
     <section class="profile-sections">
-      <div class="studio-panel">
-        <div class="panel-title">
+      <div class="content-card">
+        <div class="section-kicker compact">
           <p class="eyebrow">Portfolio</p>
           <h2>Recent wedding work</h2>
         </div>
         <div class="gallery">${vendor.gallery.map((image) => `<img src="${image}" alt="${vendor.name} wedding portfolio image">`).join("")}</div>
       </div>
-      <aside class="studio-panel">
+      <aside class="sidebar-card">
         <p class="eyebrow">AI drafted inquiry</p>
         <textarea id="draftMessage">${draftMessage(vendor)}</textarea>
         <button class="primary-button full-button" id="copyDraftButton" type="button">Copy draft</button>
@@ -655,7 +696,7 @@ function renderVendorProfile() {
     </section>
 
     <section class="page-section">
-      <div class="section-heading">
+      <div class="section-kicker">
         <div>
           <p class="eyebrow">Vendor network</p>
           <h2>Partners and similar options.</h2>
@@ -756,6 +797,7 @@ function renderCurrentPage() {
 }
 
 function init() {
+  setupChatWidget();
   setupChat();
   wireGlobalButtons();
   renderCurrentPage();

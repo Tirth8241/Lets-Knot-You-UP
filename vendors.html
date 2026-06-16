@@ -8,43 +8,47 @@
   </head>
   <body data-page="vendors">
     <header class="site-header">
-      <a class="brand" href="index.html"><span class="brand-mark">LK</span><span><strong>Lets Knot You UP</strong><small>Wedding planning studio</small></span></a>
+      <a class="brand" href="index.html"><span class="brand-mark">LK</span><span><strong>Lets Knot You UP</strong><small>AI wedding atelier</small></span></a>
       <nav class="main-nav" aria-label="Primary">
-        <a href="index.html">Planner</a>
+        <a href="index.html">Home</a>
         <a class="active" href="vendors.html">Vendors</a>
         <a href="budget.html">Budget</a>
         <a href="timeline.html">Timeline</a>
       </nav>
-      <button class="nav-cta" id="smartPackageButton" type="button">Smart package</button>
+      <button class="nav-cta" id="smartPackageButton" type="button">Build package</button>
     </header>
 
     <main>
-      <section class="market-header">
+      <section class="page-hero vendors-hero">
         <div>
-          <p class="eyebrow">Vendor marketplace</p>
-          <h1>Shortlist venues, catering, decor, attire, rentals, beauty, photo, and more.</h1>
+          <p class="eyebrow light">Vendor marketplace</p>
+          <h1>Find the team that makes the wedding feel unforgettable.</h1>
+          <p>Browse manually or let the AI score each vendor by fit, budget, guest count, style, and availability.</p>
         </div>
-        <div class="market-summary" id="marketSummary"></div>
+        <button class="glass-button" type="button" data-open-chat>Ask AI for matches</button>
       </section>
 
       <section class="filter-bar">
         <label>Category<select id="categoryFilter"></select></label>
         <label>City<select id="cityFilter"></select></label>
         <label>Max price<input id="priceFilter" type="range" min="1000" max="50000" step="1000" value="50000"><span id="priceLabel">$50,000</span></label>
-        <label>Search<input id="searchFilter" type="search" placeholder="halal, mandap, garden, rentals..."></label>
+        <label>Search<input id="searchFilter" type="search" placeholder="mandap, garden, halal, rentals..."></label>
       </section>
 
       <section class="vendor-page-grid">
         <div class="vendor-results" id="vendorList"></div>
-        <aside class="studio-panel planner-sidebar">
-          <p class="eyebrow">AI notes</p>
-          <h2 id="marketNoteTitle">Best matches first</h2>
-          <p id="marketNote">Vendors are ranked by city, style, guest count, availability, and budget fit.</p>
-          <div class="sidebar-list" id="sidebarShortlist"></div>
+        <aside class="atelier-sidebar">
+          <div id="marketSummary"></div>
+          <div class="sidebar-card">
+            <p class="eyebrow">Shortlist</p>
+            <h2>Your saved vendors</h2>
+            <div class="sidebar-list" id="sidebarShortlist"></div>
+          </div>
         </aside>
       </section>
     </main>
 
+    <div id="aiChatMount"></div>
     <script src="script.js"></script>
   </body>
 </html>

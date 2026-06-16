@@ -8,24 +8,28 @@
   </head>
   <body data-page="timeline">
     <header class="site-header">
-      <a class="brand" href="index.html"><span class="brand-mark">LK</span><span><strong>Lets Knot You UP</strong><small>Wedding planning studio</small></span></a>
+      <a class="brand" href="index.html"><span class="brand-mark">LK</span><span><strong>Lets Knot You UP</strong><small>AI wedding atelier</small></span></a>
       <nav class="main-nav" aria-label="Primary">
-        <a href="index.html">Planner</a>
+        <a href="index.html">Home</a>
         <a href="vendors.html">Vendors</a>
         <a href="budget.html">Budget</a>
         <a class="active" href="timeline.html">Timeline</a>
       </nav>
-      <a class="nav-cta" href="vendors.html">Find next vendor</a>
+      <button class="nav-cta" type="button" data-open-chat>Ask AI</button>
     </header>
 
     <main>
-      <section class="timeline-hero">
-        <p class="eyebrow">Planning timeline</p>
-        <h1>Turn vendor choices into a clear wedding checklist.</h1>
+      <section class="page-hero timeline-hero">
+        <div>
+          <p class="eyebrow light">Timeline</p>
+          <h1>A wedding checklist that responds to your vendor decisions.</h1>
+          <p>As vendors are shortlisted, the plan shifts from inspiration to practical next steps.</p>
+        </div>
       </section>
       <section class="timeline-board" id="timelineList"></section>
     </main>
 
+    <div id="aiChatMount"></div>
     <script src="script.js"></script>
   </body>
 </html>

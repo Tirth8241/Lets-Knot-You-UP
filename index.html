@@ -10,84 +10,97 @@
     <header class="site-header">
       <a class="brand" href="index.html">
         <span class="brand-mark">LK</span>
-        <span><strong>Lets Knot You UP</strong><small>Wedding planning studio</small></span>
+        <span><strong>Lets Knot You UP</strong><small>AI wedding atelier</small></span>
       </a>
       <nav class="main-nav" aria-label="Primary">
-        <a class="active" href="index.html">Planner</a>
+        <a class="active" href="index.html">Home</a>
         <a href="vendors.html">Vendors</a>
         <a href="budget.html">Budget</a>
         <a href="timeline.html">Timeline</a>
       </nav>
-      <a class="nav-cta" href="vendors.html">Find vendors</a>
+      <a class="nav-cta" href="vendors.html">Explore vendors</a>
     </header>
 
     <main>
-      <section class="planner-hero">
-        <div class="hero-copy">
-          <p class="eyebrow">AI wedding planner</p>
-          <h1>Build the vendor team, budget, and timeline in one calm workspace.</h1>
-          <p>Tell the assistant what you want, then review vendor matches manually before you shortlist or message anyone.</p>
+      <section class="showcase-hero">
+        <div class="hero-bg">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=85" alt="Elegant wedding couple celebration">
+        </div>
+        <div class="hero-content">
+          <p class="eyebrow light">AI-powered wedding planning</p>
+          <h1>Design the wedding. Match the vendors. Message them beautifully.</h1>
+          <p>Portfolio-ready planning experience for couples who want luxury guidance, smart vendor discovery, and total manual control.</p>
           <div class="hero-actions">
-            <a class="primary-button" href="vendors.html">Browse vendors</a>
-            <a class="ghost-button" href="budget.html">View budget</a>
+            <a class="primary-button" href="vendors.html">Start planning</a>
+            <button class="glass-button" type="button" data-open-chat>Ask AI planner</button>
           </div>
         </div>
-        <div class="hero-media">
-          <img src="assets/planning-workspace.png" alt="Wedding planning workspace with moodboards and vendor materials">
-          <div class="hero-stat">
-            <span>Best match</span>
-            <strong id="heroMatch">94%</strong>
-          </div>
+        <div class="hero-floating-card">
+          <span>AI match today</span>
+          <strong id="heroMatch">94%</strong>
+          <p>Best vendor team based on your city, date, guest count, style, and budget.</p>
         </div>
       </section>
 
-      <section class="planner-grid">
-        <form class="studio-panel profile-panel" id="profileForm">
-          <div class="panel-title">
-            <p class="eyebrow">Wedding profile</p>
-            <h2>Your planning brief</h2>
-          </div>
-          <div class="form-grid">
-            <label>City<select id="cityInput"></select></label>
-            <label>Date<input id="dateInput" type="date" value="2026-10-10"></label>
-            <label>Guests<input id="guestInput" type="number" min="20" max="800" value="160"></label>
-            <label>Budget<input id="budgetInput" type="number" min="5000" step="1000" value="65000"></label>
-            <label>Style<select id="styleInput"></select></label>
-          </div>
-          <button class="primary-button" type="submit">Update planner</button>
-          <div class="style-quiz" id="quizButtons"></div>
-        </form>
+      <section class="portfolio-strip" aria-label="Planning features">
+        <article>
+          <span>01</span>
+          <h2>Concierge AI</h2>
+          <p>Natural chat for vendor ideas, packages, negotiation drafts, and missing checklist items.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h2>Curated Vendors</h2>
+          <p>Venues, catering, decor, attire, rentals, beauty, photography, and trusted partners.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h2>Smart Budget</h2>
+          <p>Shortlist vendors, estimate packages, and see remaining budget before deposits.</p>
+        </article>
+      </section>
 
-        <section class="studio-panel chat-panel">
-          <div class="panel-title row-title">
+      <section class="planner-studio">
+        <div class="section-kicker">
+          <p class="eyebrow">Planning studio</p>
+          <h2>Your brief becomes a vendor strategy.</h2>
+        </div>
+
+        <div class="studio-layout">
+          <form class="profile-card" id="profileForm">
             <div>
-              <p class="eyebrow">AI concierge</p>
-              <h2>Ask for a plan</h2>
+              <p class="eyebrow">Wedding profile</p>
+              <h3>Set the creative direction</h3>
             </div>
-            <span class="pill">AI demo mode</span>
-          </div>
-          <div class="chat-log" id="chatLog" aria-live="polite"></div>
-          <form class="chat-form" id="chatForm">
-            <input id="chatInput" placeholder="Example: garden venue and vegetarian catering for 160 guests under 70k">
-            <button class="primary-button" type="submit">Send</button>
+            <div class="form-grid">
+              <label>City<select id="cityInput"></select></label>
+              <label>Date<input id="dateInput" type="date" value="2026-10-10"></label>
+              <label>Guests<input id="guestInput" type="number" min="20" max="800" value="160"></label>
+              <label>Budget<input id="budgetInput" type="number" min="5000" step="1000" value="65000"></label>
+              <label class="wide-field">Style<select id="styleInput"></select></label>
+            </div>
+            <button class="primary-button full-button" type="submit">Refresh recommendations</button>
+            <div class="style-quiz" id="quizButtons"></div>
           </form>
-          <div class="quick-prompts">
-            <button type="button" data-prompt="Build a venue, catering, decor, photo, and rental package under my budget.">Build package</button>
-            <button type="button" data-prompt="Find vendors for a traditional Indian wedding with 250 guests.">Indian wedding</button>
-            <button type="button" data-prompt="Draft a message for the best venue.">Draft message</button>
+
+          <div class="moodboard">
+            <img class="mood-main" src="assets/planning-workspace.png" alt="Wedding planning moodboard">
+            <img src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de?auto=format&fit=crop&w=700&q=80" alt="Wedding floral design">
+            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=700&q=80" alt="Garden wedding ceremony">
           </div>
-        </section>
+        </div>
       </section>
 
       <section class="page-section">
-        <div class="section-heading">
-          <p class="eyebrow">Recommended next</p>
-          <h2>Start with the highest-impact vendors.</h2>
+        <div class="section-kicker">
+          <p class="eyebrow">Recommended first</p>
+          <h2>AI-ranked vendors that fit the brief.</h2>
         </div>
         <div class="recommendation-grid" id="topRecommendations"></div>
       </section>
     </main>
 
+    <div id="aiChatMount"></div>
     <script src="script.js"></script>
   </body>
 </html>
