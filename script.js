@@ -519,6 +519,10 @@ function setupProfileForm() {
       state.budget = Number(document.querySelector("#budgetInput").value);
       state.style = styleInput.value;
       saveState();
+      if (form.dataset.redirect) {
+        window.location.href = form.dataset.redirect;
+        return;
+      }
       renderCurrentPage();
     });
   }
