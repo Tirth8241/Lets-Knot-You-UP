@@ -1,4 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;650;750;850&display=swap");
+
 :root {
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --ink: #211a1d;
   --muted: #73676b;
   --paper: #fff7f1;
@@ -31,7 +35,7 @@ body {
     radial-gradient(circle at 14% 8%, rgba(248, 184, 190, 0.52), transparent 28rem),
     radial-gradient(circle at 92% 16%, rgba(212, 166, 90, 0.2), transparent 22rem),
     linear-gradient(180deg, #fffaf6 0%, var(--paper) 52%, #fff 100%);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
 }
 
 button,
@@ -196,7 +200,9 @@ h1,
 h2,
 h3 {
   margin: 0;
-  line-height: 1.02;
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.98;
   letter-spacing: 0;
 }
 
@@ -237,13 +243,14 @@ h3 {
   flex-direction: column;
   justify-content: center;
   gap: 24px;
-  max-width: 880px;
+  max-width: 760px;
   padding: clamp(42px, 8vw, 110px);
   color: white;
 }
 
 .hero-content h1 {
-  font-size: clamp(46px, 7vw, 96px);
+  font-size: clamp(46px, 6vw, 76px);
+  max-width: 720px;
 }
 
 .hero-content p:not(.eyebrow),
@@ -251,8 +258,8 @@ h3 {
   max-width: 660px;
   margin: 0;
   color: rgba(255, 255, 255, 0.82);
-  font-size: 19px;
-  line-height: 1.6;
+  font-size: 18px;
+  line-height: 1.65;
 }
 
 .hero-actions {
@@ -318,7 +325,7 @@ h3 {
 
 .portfolio-strip h2 {
   margin-top: 22px;
-  font-size: 30px;
+  font-size: 28px;
 }
 
 .portfolio-strip p,
@@ -346,7 +353,8 @@ h3 {
 .section-kicker h2,
 .page-hero h1 {
   max-width: 860px;
-  font-size: clamp(36px, 5vw, 68px);
+  font-size: clamp(34px, 4.2vw, 58px);
+  line-height: 1;
 }
 
 .studio-layout {
@@ -382,7 +390,7 @@ h3 {
 .profile-card h3,
 .sidebar-card h2,
 .content-card h2 {
-  font-size: 30px;
+  font-size: 28px;
 }
 
 .form-grid {
@@ -617,7 +625,8 @@ textarea {
 #marketSummary strong {
   display: block;
   color: var(--wine);
-  font-size: 42px;
+  font-family: var(--font-display);
+  font-size: 40px;
 }
 
 .sidebar-list {
@@ -665,7 +674,7 @@ textarea {
 }
 
 .profile-detail-card h1 {
-  font-size: clamp(42px, 6vw, 82px);
+  font-size: clamp(42px, 5vw, 70px);
 }
 
 .stat-grid {
@@ -1015,7 +1024,8 @@ textarea {
   .hero-content h1,
   .page-hero h1,
   .section-kicker h2 {
-    font-size: 40px;
+    font-size: 38px;
+    line-height: 1.03;
   }
 
   .section-kicker,
